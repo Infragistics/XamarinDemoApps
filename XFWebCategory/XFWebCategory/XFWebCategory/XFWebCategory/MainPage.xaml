@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XFWebCategory"
+             x:Class="XFWebCategory.MainPage"
+			 xmlns:ig="clr-namespace:Infragistics.XamarinForms.Controls.Charts;assembly=Infragistics.XF.Charts">
+	<ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" WinPhone="20,20,20,20" />
+	</ContentPage.Padding>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition Height="100" />
+		</Grid.RowDefinitions>
+		<ig:XamCategoryChart x:Name="chart" Title="2010 US Population Breakdown" 
+						 MarkerTypes="None"
+						 ItemsSource="{Binding}"
+						 Legend="{x:Reference legend}"
+						 IsTransitionInEnabled="True"
+						 ExcludedProperties="[year]"
+						 YAxisTitle="Number of People"
+						 YAxisLabelRightMargin="5"
+						 XAxisTitle="Age"
+						 XAxisLabelTopMargin="5"
+						 />
+		<ig:Legend x:Name="legend" Grid.Row="1" />
+		
+	
+	</Grid>
+</ContentPage>
