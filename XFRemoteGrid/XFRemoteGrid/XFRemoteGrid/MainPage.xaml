@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XFRemoteGrid"
+             x:Class="XFRemoteGrid.MainPage"
+			 xmlns:ig="clr-namespace:Infragistics.XamarinForms.Controls.Grids;assembly=Infragistics.XF.DataGrid">
+	<ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+	</ContentPage.Padding>
+  <Grid>
+    <ig:XamDataGrid ItemsSource="{Binding}" 
+					AutoGenerateColumns="True"
+					RowHeight="80"
+					SelectionMode="MultipleRow">
+      <ig:XamDataGrid.Columns>
+        <ig:NumericColumn PropertyPath="OrderID" HeaderText="Order ID" />
+        <ig:TextColumn PropertyPath="CustomerID" HeaderText="Customer ID" />
+        <ig:TextColumn PropertyPath="ShipName" HeaderText="Ship Name" />
+        <ig:TextColumn PropertyPath="ShipCity" HeaderText="Ship City" />
+      </ig:XamDataGrid.Columns>
+    </ig:XamDataGrid>
+  </Grid>
+
+</ContentPage>
