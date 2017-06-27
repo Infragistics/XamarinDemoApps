@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XFGridUpdates"
+             x:Class="XFGridUpdates.MainPage"
+			 xmlns:ig="clr-namespace:Infragistics.XamarinForms.Controls.Grids;assembly=Infragistics.XF.DataGrid">
+
+	<ig:XamDataGrid x:Name="grid" AutoGenerateColumns="False" ItemsSource="{Binding}" HeaderClickAction="SortByMultipleColumnsTriState" >
+		<ig:XamDataGrid.Columns>
+			<ig:TextColumn PropertyPath="FirstName" />
+			<ig:TextColumn PropertyPath="LastName" />
+			<ig:TextColumn PropertyPath="Territory" />
+      <ig:NumericColumn PropertyPath="YearToDateSales"
+                        HeaderText="Sales"
+                        MinFractionDigits="2"
+                        DataBound="yearToDateSalesColumn_DataBound" />
+		</ig:XamDataGrid.Columns>
+	</ig:XamDataGrid>
+
+</ContentPage>
