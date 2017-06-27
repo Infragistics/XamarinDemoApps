@@ -3,6 +3,6 @@ This folder contains source code for Xamarin.Forms application that visualizes U
 
 These charts are built using the Infragistics Ultimate UI for Xamarin product. 
 
-<img src="PopulationCharts.gif" alt="PopulationCharts" style="width: 400px;"/>
+<img src="PopulationCharts.gif" alt="PopulationCharts" style="width: 300px;"/>
 
 ![Population Charts](PopulationCharts.gif){:height="360px" width="202px"}
