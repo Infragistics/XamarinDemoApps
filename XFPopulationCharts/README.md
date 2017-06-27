@@ -5,4 +5,4 @@ These charts are built using the Infragistics Ultimate UI for Xamarin product.
 
 <img src="PopulationCharts.gif" alt="PopulationCharts" style="width: 400px;"/>
 
-![Population Charts](PopulationCharts.gif)
+![Population Charts](PopulationCharts.gif){:height="360px" width="202px"}
