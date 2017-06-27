@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:ig="clr-namespace:Infragistics.XamarinForms.Controls.Charts;assembly=Infragistics.XF.Charts"
+             x:Class="BlankAppPort.MainPage"
+             BackgroundColor="#FFF1F1F1">
+  <ContentPage.Resources>
+        <ResourceDictionary>
+ 
+             <Style TargetType="ig:Axis" x:Key="AxisStyle">
+                <Setter Property="MajorStroke" Value="Gray"/>
+                <Setter Property="MajorStrokeThickness" Value=".5"/> 
+                <Setter Property="TickLength" Value="10"/>
+                <Setter Property="TickStroke" Value="Gray"/>
+                <Setter Property="TickStrokeThickness" Value=".5"/> 
+            </Style> 
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    <Grid Padding="0" ColumnSpacing="0" RowSpacing="5" Margin="5"   >
+		<Grid.RowDefinitions>  
+			<RowDefinition Height=".45*" />  
+			<RowDefinition Height=".55*" />    
+			<RowDefinition Height="Auto" /> 
+		</Grid.RowDefinitions>
+
+        <ig:XamDataChart Title="USA Population by Age"
+                         TitleFontSize="12" TitleTopMargin="10"
+                         TitleTextColor="Gray"
+                         GridMode="BeforeSeries"
+                         Legend="{x:Reference Legend}">
+            <ig:XamDataChart.Axes>
+                <ig:CategoryYAxis x:Name="BarYAxis"
+                                  Gap="0.4"
+                                  Overlap="1"
+                                  MajorStroke="#7E808080"
+                                  MajorStrokeThickness=".5"
+                                  TickLength="5" Strip="#1B808080"
+                                  TickStroke="#7E808080"
+                                  TickStrokeThickness="1"
+                                  ItemsSource="{Binding PopulationByAge}"
+                                  Label="Age" />
+                <ig:NumericXAxis x:Name="BarXAxis"
+                                 MajorStroke="#7E808080"
+                                 MajorStrokeThickness=".5"
+                                 TickLength="5" 
+                                 TickStroke="#7E808080"
+                                 TickStrokeThickness="1"
+                                 MinimumValue="-5"
+                                 MaximumValue="5"
+                                 TitleTopMargin="0"
+                                 Interval="1" />
+            </ig:XamDataChart.Axes>
+            <ig:XamDataChart.Series>
+                <ig:BarSeries ItemsSource="{Binding PopulationByAge}"
+                              XAxis="{x:Reference BarXAxis}"
+                              YAxis="{x:Reference BarYAxis}"  
+                              TransitionDuration="250"
+                              Brush="#86009DFF"  
+                              Outline="#86009DFF"  
+                              Thickness="0"
+                              Title="Males"
+                              ValueMemberPath="MalesInMillions" />
+                <ig:BarSeries ItemsSource="{Binding PopulationByAge}"
+                              XAxis="{x:Reference BarXAxis}"
+                              YAxis="{x:Reference BarYAxis}"
+                              TransitionDuration="250"
+                              Brush="#A1C159F7" 
+                              Outline="#A1C159F7"  
+                              Thickness="0"
+                              Title="Females"
+                              ValueMemberPath="FemalesInMillions" />
+            </ig:XamDataChart.Series>
+        </ig:XamDataChart>
+
+        <ig:XamDataChart Grid.Row="1"
+                         GridMode="BehindSeries"
+                         Title="USA Population by Generation"
+                         TitleFontSize="12" TitleTopMargin="10"
+                         TitleTextColor="Gray">
+            <ig:XamDataChart.Axes>
+                <ig:CategoryAngleAxis x:Name="AngleAxis"
+                                      MajorStroke="#7E808080"
+                                      MajorStrokeThickness=".5"
+                                      TickLength="5" Strip="#26808080"
+                                      TickStroke="#7E808080"
+                                      TickStrokeThickness="1"
+                                      ItemsSource="{Binding PopulationByGen}"
+                                      Label="Range" />
+                <ig:NumericRadiusAxis x:Name="RadiusAxis"
+                                      MajorStroke="#7E808080"
+                                      MajorStrokeThickness=".5"
+                                      TickLength="5"  
+                                      TickStroke="#7E808080"
+                                      TickStrokeThickness="1"
+                                      MinimumValue="0" Interval="40"
+                                      MaximumValue="80"
+                                      InnerRadiusExtentScale="0.2"
+                                      RadiusExtentScale="0.7" />
+            </ig:XamDataChart.Axes>
+            <ig:XamDataChart.Series> 
+                <ig:RadialPieSeries ItemsSource="{Binding PopulationByGen}"
+                                    AngleAxis="{x:Reference AngleAxis}"
+                                    ValueAxis="{x:Reference RadiusAxis}"
+                                    TransitionDuration="250"
+                                    Brush="#A1C159F7"
+                                    Outline="#A1C159F7" Thickness="0"
+                                    ValueMemberPath="FemalesInMillions" />
+                <ig:RadialPieSeries ItemsSource="{Binding PopulationByGen}"
+                                    AngleAxis="{x:Reference AngleAxis}"
+                                    ValueAxis="{x:Reference RadiusAxis}"
+                                    TransitionDuration="250"
+                                    Brush="#86009DFF"
+                                    Outline="#86009DFF" Thickness="0"
+                                    ValueMemberPath="MalesInMillions" />
+            </ig:XamDataChart.Series>
+        </ig:XamDataChart>
+        
+        <ig:Legend x:Name="Legend" Grid.Row="1" Margin="5"
+                   VerticalOptions="StartAndExpand"
+                   HorizontalOptions="EndAndExpand" />
+        
+        <Label Text="{Binding CurrentYear, StringFormat=\{0:0000\}}}" 
+               Grid.Row="1" Margin="0,25,0,0"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand" />
+         
+        <Grid Grid.Row="2" Margin="10,0,10,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Slider x:Name="YearSlider" IsEnabled="{Binding IsEditableYear}"
+                    Maximum="2100" Value="{Binding CurrentYear}"
+                    Minimum="1950" Grid.Column="1"  />
+            
+            <Label Text="Year "  Grid.Row="0" VerticalOptions="CenterAndExpand" /> 
+            <Switch IsToggled="{Binding IsUpdatingData, Mode=TwoWay}"  Grid.Column="2"/>
+           
+        </Grid>
+      
+	</Grid>
+</ContentPage>
