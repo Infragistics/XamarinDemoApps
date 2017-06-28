@@ -13,7 +13,6 @@ namespace SQLDemo.Data
         [PrimaryKey, AutoIncrement]
         public int TrackId { get; set; }
 
-        //[Column("tracks__Name")]
         [MaxLength(200)]
         public string Name { get; set; }
 
@@ -21,9 +20,6 @@ namespace SQLDemo.Data
 
         [Column("Title")]
         public string AlbumTitle { get; set; }
-
-        //[Column("genres__Name")]
-        //public string GenreName { get; set; }
 
         public int MediaTypeId { get; set; }
 

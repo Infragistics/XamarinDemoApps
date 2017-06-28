@@ -18,15 +18,8 @@ namespace SQLDemo
         public MainPage(string dbPath)
         {
             _connection = new SQLiteAsyncConnection(dbPath);
-            //var count = _connection.ExecuteScalar<int>("select count(*) from tracks");
-            //var tracks = from e in _connection.Table<Track>()
-            //           select e;
-
-            //var tracksList = tracks.ToList();
             
             InitializeComponent();
-
-            //grid.ItemsSource = tracksList;
 
             var dataSource = new SQLiteVirtualDataSource();
             dataSource.Connection = _connection;
