@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SQLDemo"
+             x:Class="SQLDemo.MainPage"
+             xmlns:igGrid="clr-namespace:Infragistics.XamarinForms.Controls.Grids;assembly=Infragistics.XF.DataGrid">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <igGrid:XamDataGrid x:Name="grid" RowHeight="90"
+                        SelectionMode="MultipleRow"
+                        HeaderClickAction="SortByMultipleColumnsTriState"
+                        AutoGenerateColumns="False">
+            <igGrid:XamDataGrid.Columns>
+                <igGrid:TextColumn PropertyPath="Name" 
+                                LineBreakMode="WordWrap" 
+                                Width="1*"
+                                />
+                <igGrid:TextColumn PropertyPath="Composer" 
+                                LineBreakMode="Ellipsis"
+                                Width="1.25*"/>
+                <igGrid:TextColumn PropertyPath="AlbumTitle" 
+                        HeaderText="Album Title" 
+                        LineBreakMode="WordWrap" 
+                        Width="1*"/>
+                <igGrid:NumericColumn PropertyPath="UnitPrice"
+                        HeaderText="Unit Price"
+                        MinFractionDigits="2"
+                        Width="1*"/>
+            </igGrid:XamDataGrid.Columns>
+        </igGrid:XamDataGrid>
+
+        <StackLayout Orientation="Horizontal" Grid.Row="1">
+            <Label Text="Filter" />
+            <Entry TextChanged="Entry_TextChanged" WidthRequest="300" />
+        </StackLayout>
+    </Grid>
+
+</ContentPage>
