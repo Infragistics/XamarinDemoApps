@@ -3,20 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:ig="clr-namespace:Infragistics.XamarinForms.Controls.Charts;assembly=Infragistics.XF.Charts"
              x:Class="BlankAppPort.MainPage"
-             BackgroundColor="#FFF1F1F1">
-  <ContentPage.Resources>
-        <ResourceDictionary>
- 
-             <Style TargetType="ig:Axis" x:Key="AxisStyle">
-                <Setter Property="MajorStroke" Value="Gray"/>
-                <Setter Property="MajorStrokeThickness" Value=".5"/> 
-                <Setter Property="TickLength" Value="10"/>
-                <Setter Property="TickStroke" Value="Gray"/>
-                <Setter Property="TickStrokeThickness" Value=".5"/> 
-            </Style> 
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    
+             BackgroundColor="#FFF1F1F1">  
     
     <Grid Padding="0" ColumnSpacing="0" RowSpacing="5" Margin="5"   >
 		<Grid.RowDefinitions>  
@@ -28,24 +15,24 @@
         <ig:XamDataChart Title="USA Population by Age"
                          TitleFontSize="12" TitleTopMargin="10"
                          TitleTextColor="Gray"
-                         GridMode="BeforeSeries"
+                         GridMode="BeforeSeries" PlotAreaBackground="#4DE3E3E3"
                          Legend="{x:Reference Legend}">
             <ig:XamDataChart.Axes>
                 <ig:CategoryYAxis x:Name="BarYAxis"
-                                  Gap="0.4"
+                                  Gap="0.5"
                                   Overlap="1"
-                                  MajorStroke="#7E808080"
-                                  MajorStrokeThickness=".5"
-                                  TickLength="5" Strip="#1B808080"
-                                  TickStroke="#7E808080"
+                                  MajorStroke="#BB808080" Stroke="#BB808080"
+                                  MajorStrokeThickness="0"  StrokeThickness="0"
+                                  TickLength="5" 
+                                  TickStroke="#BB808080"
                                   TickStrokeThickness="1"
                                   ItemsSource="{Binding PopulationByAge}"
                                   Label="Age" />
                 <ig:NumericXAxis x:Name="BarXAxis"
-                                 MajorStroke="#7E808080"
-                                 MajorStrokeThickness=".5"
-                                 TickLength="5" 
-                                 TickStroke="#7E808080"
+                                 MajorStroke="#BB808080" Stroke="#BB808080"
+                                 MajorStrokeThickness="1"  StrokeThickness="1"
+                                 TickLength="5"  
+                                 TickStroke="#BB808080"
                                  TickStrokeThickness="1"
                                  MinimumValue="-5"
                                  MaximumValue="5"
@@ -56,7 +43,7 @@
                 <ig:BarSeries ItemsSource="{Binding PopulationByAge}"
                               XAxis="{x:Reference BarXAxis}"
                               YAxis="{x:Reference BarYAxis}"  
-                              TransitionDuration="250"
+                              TransitionDuration="200"  
                               Brush="#86009DFF"  
                               Outline="#86009DFF"  
                               Thickness="0"
@@ -65,7 +52,7 @@
                 <ig:BarSeries ItemsSource="{Binding PopulationByAge}"
                               XAxis="{x:Reference BarXAxis}"
                               YAxis="{x:Reference BarYAxis}"
-                              TransitionDuration="250"
+                              TransitionDuration="200"
                               Brush="#A1C159F7" 
                               Outline="#A1C159F7"  
                               Thickness="0"
@@ -81,18 +68,18 @@
                          TitleTextColor="Gray">
             <ig:XamDataChart.Axes>
                 <ig:CategoryAngleAxis x:Name="AngleAxis"
-                                      MajorStroke="#7E808080"
+                                      MajorStroke="#BB808080"
                                       MajorStrokeThickness=".5"
-                                      TickLength="5" Strip="#26808080"
-                                      TickStroke="#7E808080"
+                                      TickLength="5" 
+                                      TickStroke="#BB808080"
                                       TickStrokeThickness="1"
                                       ItemsSource="{Binding PopulationByGen}"
-                                      Label="Range" />
+                                      Label="GenerationRange" />
                 <ig:NumericRadiusAxis x:Name="RadiusAxis"
-                                      MajorStroke="#7E808080"
+                                      MajorStroke="#BB808080"
                                       MajorStrokeThickness=".5"
-                                      TickLength="5"  
-                                      TickStroke="#7E808080"
+                                      TickLength="5"   
+                                      TickStroke="#BB808080"
                                       TickStrokeThickness="1"
                                       MinimumValue="0" Interval="40"
                                       MaximumValue="80"
@@ -103,14 +90,14 @@
                 <ig:RadialPieSeries ItemsSource="{Binding PopulationByGen}"
                                     AngleAxis="{x:Reference AngleAxis}"
                                     ValueAxis="{x:Reference RadiusAxis}"
-                                    TransitionDuration="250"
+                                    TransitionDuration="200"
                                     Brush="#A1C159F7"
                                     Outline="#A1C159F7" Thickness="0"
                                     ValueMemberPath="FemalesInMillions" />
                 <ig:RadialPieSeries ItemsSource="{Binding PopulationByGen}"
                                     AngleAxis="{x:Reference AngleAxis}"
                                     ValueAxis="{x:Reference RadiusAxis}"
-                                    TransitionDuration="250"
+                                    TransitionDuration="200"
                                     Brush="#86009DFF"
                                     Outline="#86009DFF" Thickness="0"
                                     ValueMemberPath="MalesInMillions" />

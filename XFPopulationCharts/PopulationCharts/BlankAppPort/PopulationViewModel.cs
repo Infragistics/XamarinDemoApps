@@ -25,14 +25,14 @@ namespace BlankAppPort
         {
             PopulationLookup = new Dictionary<int, List<PopulationData>>();
 
-            // initalize population with default values for each age of population
+            // initialize population with default values for each age of population
             PopulationByAge = new List<PopulationData>();
             for (var age = 0; age <= 100; age++)
             {
                 PopulationByAge.Add(new PopulationData(age, HistoryStart, 0, 0));
             }
 
-            // initalize population with default values for each generation of population
+            // initialize population with default values for each generation of population
             PopulationByGen = new List<PopulationData>();
             PopulationByGen.Add(new PopulationData(1820, 1900, "1900" ));
             PopulationByGen.Add(new PopulationData(1900, 1930, "1930" ));
@@ -117,7 +117,7 @@ namespace BlankAppPort
             }
         }
          
-        // values controling range of data retrived from population service  
+        // values controlling range of data retrieved from population service  
         protected int HistoryStop = 2100;
         protected int HistoryStart = 1950;
         protected int HistoryInterval = 10;
@@ -146,13 +146,12 @@ namespace BlankAppPort
               
             CurrentYear = 1950; 
              
-            Device.StartTimer(new TimeSpan(0, 0, 0, 0, 400), TimerCallback);
+            Device.StartTimer(new TimeSpan(0, 0, 0, 0, 200), TimerCallback);
         }
 
         private bool TimerCallback()
         {
-            CurrentYear += HistoryInterval;
-
+            CurrentYear += HistoryInterval; 
             return IsUpdatingData;
         }
 
